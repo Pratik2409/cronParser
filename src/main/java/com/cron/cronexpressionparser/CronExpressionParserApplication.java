@@ -28,8 +28,8 @@ public class CronExpressionParserApplication implements CommandLineRunner {
             System.out.println("Please provide valid cron input!!");
         }
 
-        if(args.length > 0) {
-            parserService.parse(args[0]);
+        if (args.length > 0) {
+            System.out.println(parserService.parse(args[0]));
         }
     }
 }

@@ -19,9 +19,13 @@ public class ParserServiceImpl implements ParserService {
         StringBuilder cronExpression =  new StringBuilder();
         StringBuilder cronDayOfWeekExpression = new StringBuilder("0 * * ? * ");
 
+        StringBuilder response = new StringBuilder();
+
         if (commandArray.length < 6 || commandArray.length > 7) {
-            System.out.println("Please provide valid cron input!!");
-            System.exit(0);
+            response.append("Please provide valid cron input!!");
+            System.out.println(response);
+            return response.toString();
+            //System.exit(0);
         }
 
         /*
@@ -53,14 +57,14 @@ public class ParserServiceImpl implements ParserService {
 
         try {
             CronExpression cronExpressions = new CronExpression(cronExpression.toString());
-            String result = cronExpressions.getExpressionSummary();
+            String cronExpressionResult = cronExpressions.getExpressionSummary();
 
             CronExpression cronExpression2 = new CronExpression(cronDayOfWeekExpression.toString());
-            String result2 = cronExpression2.getExpressionSummary();
+            String cronDayOfWeekExpressionResult = cronExpression2.getExpressionSummary();
 
-            String[] resultDayOfWeekExpressionSummaryArray = result2.split("\\r?\\n");
+            String[] resultDayOfWeekExpressionSummaryArray = cronDayOfWeekExpressionResult.split("\\r?\\n");
 
-            String[] resultExpressionSummaryArray = result.split("\\r?\\n");
+            String[] resultExpressionSummaryArray = cronExpressionResult.split("\\r?\\n");
 
             for (String data : resultExpressionSummaryArray) {
 
@@ -73,30 +77,38 @@ public class ParserServiceImpl implements ParserService {
                             minutes.append(i + " ");
                         }
 
-                        System.out.println(data.replace(",", " ").replace("minutes:", "minute        ").replace("*", minutes.toString()));
+                        response.append("\n"+ data.replace(",", " ").replace("minutes:", "minute        ").replace("*", minutes.toString()));
+
+                        //System.out.println(response);
                     } else {
-                        System.out.println(data.replace(",", " ").replace("minutes:", "minute        "));
+
+                        response.append("\n"+ data.replace(",", " ").replace("minutes:", "minute        "));
+                        //System.out.println(response);
                     }
 
 
                 }
 
                 if (data.contains("hours")) {
-                    System.out.println(data.replace(",", " ").replace("hours:", "hour          ")
+                    response.append("\n"+ data.replace(",", " ").replace("hours:", "hour          ")
                             .replace("*", "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24"));
+                    //System.out.println(response);
                 }
 
                 if (data.contains("daysOfMonth")) {
-                    System.out.println(data.replace(",", " ").replace("daysOfMonth:", "day of month  "));
+                    response.append("\n"+ data.replace(",", " ").replace("daysOfMonth:", "day of month  "));
+                    //System.out.println();
                 }
 
                 if (data.contains("months")) {
 
                     if (data.contains("*")) {
-                        System.out.println(data.replace(",", " ").replace("months:", "date of month ").replace("*",
+                        response.append("\n"+ data.replace(",", " ").replace("months:", "date of month ").replace("*",
                                 "1 2 3 4 5 6 7 8 9 10 11 12"));
+
+
                     } else {
-                        System.out.println(data.replace(",", " ").replace("months:", "date of month "));
+                        response.append("\n"+ data.replace(",", " ").replace("months:", "date of month "));
                     }
 
                 }
@@ -106,20 +118,18 @@ public class ParserServiceImpl implements ParserService {
             for (String data : resultDayOfWeekExpressionSummaryArray) {
 
                 if (data.contains("daysOfWeek")) {
-                    System.out.println(data.replace(",", " ").replace("daysOfWeek:", "day of week   ")
+                    response.append("\n"+ data.replace(",", " ").replace("daysOfWeek:", "day of week   ")
                             .replace("*", "1 2 3 4 5 6 7"));
+
                 }
 
             }
-
-            System.out.println("command        " + unixCommand);
+            response.append("\ncommand        " + unixCommand);
+            System.out.println();
 
         } catch (ParseException e) {
-
             System.out.println(e.getMessage());
         }
-
-
-        return null;
+        return response.toString();
     }
 }

@@ -15,12 +15,40 @@ public class ParserServiceImplTest {
     @Autowired
     private ParserService parserService;
 
+
     @Test
-    public void parseTest() throws Exception {
+    public void parseWrongArgumentTest() throws Exception {
+        String cronExpression = "*/15 0 1,15 * 1-5 6 7 /usr/bin/find";
+        Assertions.assertEquals("Please provide valid cron input!!", parserService.parse(cronExpression));
+    }
 
-        String cronExpression = "*/15 0 1,15 * 1-5 /usr/bin/find";
-        Assertions.assertNull(parserService.parse(cronExpression));
+    @Test
+    public void parsePositiveTest() throws Exception {
 
+        String result = "\nminute         0 15 30 45" +
+                "\nhour           7" +
+                "\nday of month   *" +
+                "\ndate of month  8" +
+                "\nday of week    5" +
+                "\ncommand        /usr";
+
+        String cronExpression = "*/15 7 * 8 5 /usr";
+        Assertions.assertEquals(result, parserService.parse(cronExpression));
+
+
+    }
+
+    @Test
+    public void parseNegativeTest() throws Exception {
+        String result = "\nminute         0 15 30 45" +
+                "\nhour           7" +
+                "\nday of month   *" +
+                "\ndate of month  8" +
+                "\nday of week    5" +
+                "\ncommand        /usr";
+
+        String cronExpression = "*/15 7 ? 8 5 /usr";
+        Assertions.assertNotEquals(result, parserService.parse(cronExpression));
     }
 
 }
