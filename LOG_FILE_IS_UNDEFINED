@@ -1,0 +1,9 @@
+2021-10-17 11:11:51.018  INFO 1140 --- [Test worker] c.c.c.service.ParserServiceImplTest      : Starting ParserServiceImplTest using Java 1.8.0_291 on NLAMSHQ3768477L with PID 1140 (started by W760KRC in C:\Users\w760krc\Documents\cronExpressionParser)
+2021-10-17 11:11:51.026  INFO 1140 --- [Test worker] c.c.c.service.ParserServiceImplTest      : No active profile set, falling back to default profiles: default
+2021-10-17 11:11:54.847  INFO 1140 --- [Test worker] c.c.c.service.ParserServiceImplTest      : Started ParserServiceImplTest in 4.938 seconds (JVM running for 9.336)
+2021-10-17 11:12:03.945  INFO 18224 --- [main] c.c.c.CronExpressionParserApplication    : Starting CronExpressionParserApplication using Java 11.0.12 on NLAMSHQ3768477L with PID 18224 (C:\Users\w760krc\Documents\cronExpressionParser\build\libs\cronExpressionParser-0.0.1-SNAPSHOT.jar started by W760KRC in C:\Users\w760krc\Documents\cronExpressionParser)
+2021-10-17 11:12:03.953  INFO 18224 --- [main] c.c.c.CronExpressionParserApplication    : No active profile set, falling back to default profiles: default
+2021-10-17 11:12:06.274  INFO 18224 --- [main] c.c.c.CronExpressionParserApplication    : Started CronExpressionParserApplication in 4.266 seconds (JVM running for 5.76)
+2021-10-17 23:49:30.619  INFO 2872 --- [main] c.c.c.CronExpressionParserApplication    : Starting CronExpressionParserApplication using Java 11.0.12 on NLAMSHQ3768477L with PID 2872 (C:\Users\w760krc\Documents\cronExpressionParser\build\libs\cronExpressionParser-0.0.1-SNAPSHOT.jar started by W760KRC in C:\Users\w760krc\Documents\cronExpressionParser)
+2021-10-17 23:49:30.623  INFO 2872 --- [main] c.c.c.CronExpressionParserApplication    : No active profile set, falling back to default profiles: default
+2021-10-17 23:49:31.625  INFO 2872 --- [main] c.c.c.CronExpressionParserApplication    : Started CronExpressionParserApplication in 2.251 seconds (JVM running for 3.34)
