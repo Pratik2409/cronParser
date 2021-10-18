@@ -24,7 +24,7 @@ public class CronExpressionParserApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (args.length == 0) {
+        if (args.length != 1) {
             System.out.println("Please provide valid cron input!!");
         }
 
